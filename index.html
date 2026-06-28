@@ -1,258 +1,659 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Gokul Rejithkumar</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
-        type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gokul Rejithkumar · ML Engineer</title>
+<meta name="description" content="Gokul Rejithkumar · ML Engineer. Publications, experience, and a working record." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ---------- TOKENS ---------- */
+:root{
+  --bg:#f6f2e7;
+  --surface:#fffdf7;
+  --text:#16161a;
+  --muted:#65656d;
+  --line:#ddd9cd;
+  --indigo:#272757;      /* deep block fill */
+  --green:#253d2c;       /* deep block fill */
+  --accent:#3a3a8c;      /* brightened indigo, links and markers */
+  --accent-2:#316b43;    /* brightened green, secondary markers */
+  --grid:rgba(22,22,26,.022);
+  --grid-2:rgba(22,22,26,.035);
+  --square-empty:rgba(22,22,26,.07);
+}
+html[data-theme="dark"]{
+  --bg:#000000;
+  --surface:#0e0e11;
+  --text:#ececf0;
+  --muted:#8c8c95;
+  --line:#222227;
+  --indigo:#5a5ac4;
+  --green:#3f7a53;
+  --accent:#9494e6;
+  --accent-2:#74b690;
+  --grid:rgba(255,255,255,.02);
+  --grid-2:rgba(255,255,255,.032);
+  --square-empty:rgba(255,255,255,.06);
+}
+
+/* ---------- BASE ---------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Inter",system-ui,sans-serif;
+  font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    repeating-linear-gradient(45deg,var(--grid),var(--grid) 1px,transparent 1px,transparent 26px),
+    repeating-linear-gradient(135deg,var(--grid),var(--grid) 1px,transparent 1px,transparent 26px);
+  transition:background-color .35s ease,color .35s ease;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+.wrap{max-width:880px;margin:0 auto;padding:0 28px}
+
+/* ---------- THEME TOGGLE ---------- */
+.toggle{
+  flex-shrink:0;z-index:60;
+  width:38px;height:38px;border:1px solid var(--line);background:var(--surface);
+  cursor:pointer;display:grid;place-items:center;color:var(--text);padding:0;
+  transition:border-color .2s,background .2s;
+}
+.toggle:hover{border-color:var(--accent)}
+.toggle svg{width:17px;height:17px}
+
+/* ---------- NAV ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:880px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:center;gap:18px;
+}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk";font-weight:600;letter-spacing:.02em;flex-shrink:0}
+.brand .mark{display:grid;grid-template-columns:repeat(2,5px);grid-template-rows:repeat(2,5px);gap:2px}
+.brand .mark span{width:5px;height:5px;background:var(--accent)}
+.brand .mark span:nth-child(4){background:var(--accent-2)}
+.nav-links{flex:1 1 auto;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.nav-links a{
+  font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);
+  letter-spacing:.02em;transition:color .2s;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--text)}
+
+/* ---------- HERO ---------- */
+header.hero{padding:74px 0 64px}
+.hero-grid{display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap}
+.hero-text{flex:1;min-width:280px}
+.eyebrow{
+  font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:18px;
+  display:flex;align-items:center;gap:9px;
+}
+.eyebrow::before{content:"";width:8px;height:8px;background:var(--accent-2)}
+.hero h1{
+  font-family:"Space Grotesk";font-weight:700;font-size:clamp(2.4rem,6vw,3.7rem);
+  line-height:1.02;letter-spacing:-.02em;margin:0 0 14px;
+}
+.hero .role{font-size:1.18rem;color:var(--muted);margin:0 0 26px;font-weight:500}
+.hero .role b{color:var(--text);font-weight:600}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.links a{
+  font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.02em;
+  border:1px solid var(--line);padding:8px 14px;background:var(--surface);
+  display:inline-flex;align-items:center;gap:7px;transition:.2s;
+}
+.links a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.links a .dot{width:6px;height:6px;background:var(--accent-2)}
+.hero-about{margin-top:34px;padding-top:30px;border-top:1px solid var(--line)}
+.hero-about .lead{margin:0 0 14px}
+.hero-about .lead:last-child{margin-bottom:0}
+
+/* profile photo placeholder */
+.photo-placeholder{
+  width:165px;height:242px;flex-shrink:0;position:relative;
+  border:2px solid #9494e6;
+}
+
+/* ---------- SECTIONS ---------- */
+section{padding:46px 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.sec-head .sq{width:12px;height:12px;background:var(--accent);flex-shrink:0}
+.sec-head h2{font-family:"Space Grotesk";font-weight:600;font-size:1.5rem;letter-spacing:-.01em;margin:0;white-space:nowrap}
+.sec-head .conn{flex:1;height:1px;background:var(--line);position:relative}
+.sec-head .conn::before,.sec-head .conn::after{content:"";position:absolute;top:-2px;width:5px;height:5px;background:var(--accent-2)}
+.sec-head .conn::before{left:0}
+.sec-head .conn::after{right:0;background:var(--accent)}
+
+.lead{font-size:1.05rem;color:var(--text);max-width:64ch}
+.lead.muted{color:var(--muted)}
+p{margin:0 0 14px}
+
+/* card */
+.card{border:1px solid var(--line);background:var(--surface);padding:20px 22px;transition:border-color .25s}
+.card:hover{border-color:var(--accent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:680px){.grid2{grid-template-columns:1fr}}
+.item-top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.item-top h3{font-family:"Space Grotesk";font-weight:600;font-size:1.05rem;margin:0}
+.when{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);white-space:nowrap}
+.org{color:var(--accent);font-weight:500;font-size:.95rem;margin:2px 0 10px}
+.card ul{margin:8px 0 0;padding-left:18px;color:var(--muted)}
+.card ul li{margin-bottom:5px}
+.card ul li::marker{color:var(--accent-2)}
+
+/* ---------- EXPERIENCE (vertical, chronological) ---------- */
+.explist{position:relative;margin-left:6px;padding-left:26px}
+.explist::before{content:"";position:absolute;left:4px;top:10px;bottom:10px;width:1px;background:var(--line)}
+.exp{position:relative;padding:6px 0 22px}
+.exp:last-child{padding-bottom:2px}
+.exp::before{content:"";position:absolute;left:-26px;top:9px;width:9px;height:9px;background:var(--bg);border:2px solid var(--accent)}
+.exp:first-child::before{background:var(--accent-2);border-color:var(--accent-2)}
+.exp-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.exp-head h3{font-family:"Space Grotesk";font-weight:600;font-size:1.08rem;margin:0}
+.exp .org{color:var(--accent);font-weight:500;font-size:.95rem;margin:3px 0 10px}
+.exp ul{margin:0;padding-left:18px;color:var(--muted)}
+.exp ul li{margin-bottom:5px}
+.exp ul li::marker{color:var(--accent-2)}
+
+/* ---------- STACK / SKILLS METER ---------- */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px}
+@media(max-width:680px){.skills{grid-template-columns:1fr}}
+.skill{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.sk-name{font-family:"JetBrains Mono",monospace;font-size:13px}
+.meter{display:flex;gap:4px}
+.meter i{width:14px;height:14px;background:var(--square-empty)}
+.meter i.on{background:var(--accent)}
+.meter i.on.g{background:var(--accent-2)}
+
+/* ---------- PUBLICATIONS ---------- */
+.pubchart{display:flex;gap:18px;align-items:flex-end;padding:6px 0 22px;margin-bottom:8px;border-bottom:1px dashed var(--line)}
+.pubchart .col{display:flex;flex-direction:column;align-items:center;gap:9px}
+.pubchart .stack{display:flex;flex-direction:column-reverse;gap:4px}
+.pubchart .stack i{width:20px;height:20px;background:var(--indigo)}
+.pubchart .stack i.award{background:var(--green)}
+.pubchart .yr{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted)}
+.pubchart .cap{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);max-width:120px;text-align:right;line-height:1.5}
+.pub{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.pub:last-child{border-bottom:0}
+.pub .tag{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.04em;border:1px solid var(--line);padding:4px 8px;height:fit-content;white-space:nowrap;color:var(--accent)}
+.pub .pbody h3{font-family:"Space Grotesk";font-weight:600;font-size:1.02rem;margin:0 0 4px}
+.pub .pbody .auth{color:var(--muted);font-size:.9rem}
+.pub .award{color:var(--accent-2);font-weight:600}
+
+/* certifications (list) */
+.certlist{display:flex;flex-direction:column}
+.cert{display:flex;align-items:center;gap:13px;padding:12px 0;border-bottom:1px dashed var(--line);font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--text)}
+.cert:last-child{border-bottom:0}
+.cert .b{width:8px;height:8px;background:var(--accent);flex-shrink:0}
+
+/* reading */
+.shelf-label{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.book{display:flex;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px dashed var(--line)}
+.book:last-child{border-bottom:0}
+.book .sp{width:7px;height:18px;background:var(--accent);flex-shrink:0}
+.book.read .sp{background:var(--accent-2)}
+.book h4{font-family:"Space Grotesk";font-weight:500;font-size:.98rem;margin:0}
+.book .by{color:var(--muted);font-size:.86rem}
+
+/* timeline */
+.tl{position:relative;margin-left:6px;padding-left:30px}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl-row{position:relative;padding:6px 0 20px}
+.tl-row::before{content:"";position:absolute;left:-30px;top:8px;width:11px;height:11px;background:var(--bg);border:2px solid var(--accent)}
+.tl-row.key::before{background:var(--accent-2);border-color:var(--accent-2)}
+.tl-row .date{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);letter-spacing:.02em}
+.tl-row .ev{font-weight:500;margin-top:2px}
+.tl-row .ev span{color:var(--muted);font-weight:400}
+.tl-more{
+  margin-top:18px;font-family:"JetBrains Mono",monospace;font-size:12px;
+  letter-spacing:.03em;color:var(--muted);background:none;border:1px solid var(--line);
+  padding:9px 15px;cursor:pointer;transition:border-color .2s,color .2s;
+}
+.tl-more:hover{border-color:var(--accent);color:var(--text)}
+
+/* ---------- RESUME REQUEST ---------- */
+.reqbox{max-width:520px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.field label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.field input,.field textarea{
+  border:1px solid var(--line);background:var(--bg);color:var(--text);
+  padding:10px 12px;font-family:"Inter",sans-serif;font-size:14px;border-radius:0;resize:vertical;
+}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.btn{
+  font-family:"JetBrains Mono",monospace;font-size:13px;border:1px solid var(--accent);
+  background:var(--accent);color:var(--bg);padding:11px 18px;cursor:pointer;
+  letter-spacing:.03em;border-radius:0;transition:filter .2s,transform .2s;
+}
+.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.note{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--muted);margin-top:10px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:40px 0 56px;margin-top:10px}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.foot-in .links a{background:transparent}
+footer small{font-family:"JetBrains Mono",monospace;color:var(--muted);font-size:12px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  .links a:hover,.btn:hover{transform:none}
+}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- RESPONSIVE ---------- */
+/* tablet */
+@media(max-width:768px){
+  body{font-size:15.5px}
+  .wrap{padding:0 22px}
+  .nav-inner{padding:12px 22px}
+  header.hero{padding:54px 0 48px}
+  .hero-grid{gap:28px}
+  section{padding:38px 0}
+  .sec-head{gap:10px;margin-bottom:24px}
+  .sec-head h2{font-size:1.35rem}
+  .skills{gap:12px 28px}
+}
+/* phone */
+@media(max-width:560px){
+  body{font-size:15px}
+  .wrap{padding:0 16px}
+  .nav-inner{padding:11px 16px;gap:12px}
+  .nav-links{gap:10px 13px}
+  header.hero{padding:40px 0 38px}
+  .hero-grid{flex-direction:column;gap:26px}
+  .hero-text{min-width:0}
+  .photo-placeholder{width:121px;height:178px}
+  .hero .role{font-size:1.06rem}
+  .links{gap:8px}
+  .links a{padding:8px 12px}
+  section{padding:30px 0}
+  .sec-head{margin-bottom:20px}
+  .sec-head h2{font-size:1.22rem;white-space:normal}
+  .card{padding:16px 16px}
+  .pub{flex-direction:column;gap:8px}
+  .pub .tag{align-self:flex-start}
+  .meter i{width:12px;height:12px}
+  .reqbox{max-width:100%}
+  .foot-in{flex-direction:column;align-items:flex-start;gap:14px}
+}
+/* small phone */
+@media(max-width:360px){
+  .wrap{padding:0 13px}
+  .nav-links{gap:9px 11px}
+  .meter i{width:11px;height:11px}
+}
+
+/* ---------- SPA PANELS (only active when JS is on) ---------- */
+.js .stage{position:relative;overflow-x:hidden;min-height:calc(100vh - 190px)}
+.js .panel{display:none;border-top:none}
+.js .panel.active{display:block}
+/* first section keeps its top padding even without the hero above it */
+.js section.panel{padding-top:40px}
+@keyframes panelInRight{from{opacity:0;transform:translateX(56px)}to{opacity:1;transform:translateX(0)}}
+@keyframes panelInLeft{from{opacity:0;transform:translateX(-56px)}to{opacity:1;transform:translateX(0)}}
+.js .panel.from-right{animation:panelInRight .42s cubic-bezier(.22,.61,.36,1) both}
+.js .panel.from-left{animation:panelInLeft .42s cubic-bezier(.22,.61,.36,1) both}
+/* active nav link: clear rectangular bound */
+.nav-links a.current{color:var(--text);outline:1.5px solid var(--accent);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){
+  .js .panel.from-right,.js .panel.from-left{animation:none}
+}
+
+/* ---------- MINIMAL DECORATION ---------- */
+/* faint crosshair ticks at the content corners */
+.js .stage::before,.js .stage::after{
+  content:"";position:absolute;width:10px;height:10px;opacity:.35;pointer-events:none;
+  background:
+    linear-gradient(var(--muted),var(--muted)) center/100% 1px no-repeat,
+    linear-gradient(var(--muted),var(--muted)) center/1px 100% no-repeat;
+}
+.js .stage::before{top:5px;right:0}
+.js .stage::after{bottom:5px;left:0}
+/* small two-tone square mark in the footer, echoing the brand */
+.foot-mark{display:inline-grid;grid-template-columns:repeat(2,4px);grid-template-rows:repeat(2,4px);gap:2px;margin-right:9px;vertical-align:middle}
+.foot-mark i{width:4px;height:4px;background:var(--accent)}
+.foot-mark i:nth-child(4){background:var(--accent-2)}
+
+/* ---------- ICON COLORS: fixed to dark-mode palette in all themes ---------- */
+.brand .mark span,.sec-head .sq,.sec-head .conn::after,.meter i.on,.cert .b,.book .sp,.foot-mark i{background:#9494e6}
+.brand .mark span:nth-child(4),.eyebrow::before,.links a .dot,.sec-head .conn::before,.exp:first-child::before,.meter i.on.g,.book.read .sp,.foot-mark i:nth-child(4),.tl-row.key::before{background:#74b690}
+.exp::before,.tl-row::before{border-color:#9494e6}
+.exp:first-child::before,.tl-row.key::before{border-color:#74b690}
+</style>
+<script>document.documentElement.classList.add("js");</script>
 </head>
+<body>
 
-<body id="page-top">
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <span class="d-block d-lg-none">;)</span>
-            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
-                    src="assets/img/profile.jpg" alt="..." /></span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
-                class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
-                <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li> -->
-                <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li> -->
-            </ul>
-        </div>
-    </nav>
-    <!-- Page Content-->
-    <div class="container-fluid p-0">
-        <!-- About-->
-        <section class="resume-section" id="about">
-            <div class="resume-section-content">
-                <h1 class="mb-0">
-                    Gokul
-                    <span class="text-primary">Rejithkumar</span>
-                </h1>
-                <div class="subheading mb-5">
-                    Pune · India · (+91) 968 986 9448
-                    <a href="mailto:gokulrejith@gmail.com">gokulrejith@gmail.com</a>
-                </div>
-                <p class="lead mb-5">I am Gokul Rejithkumar. Nice to meet you :)</p>
-                <div class="social-icons">
-                    <a class="social-icon" href="https://www.linkedin.com/in/gokulrejithkumar/" target="_blank"
-                        rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="social-icon" href="https://github.com/gokulrejith" target="_blank"
-                        rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                    <a class="social-icon" href="https://twitter.com/GRejithkumar" target="_blank"
-                        rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </section>
-        <hr class="m-0" />
-        <!-- Experience-->
-        <section class="resume-section" id="experience">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Experience</h2>
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#home" aria-label="Gokul Rejithkumar, home">
+      <span class="mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+      GR
+    </a>
+    <div class="nav-links">
+      <a href="#home">about</a>
+      <a href="#experience">experience</a>
+      <a href="#stack">stack</a>
+      <a href="#publications">publications</a>
+      <a href="#certifications">certifications</a>
+      <a href="#reading">reading</a>
+      <a href="#education">education</a>
+      <a href="#timeline">timeline</a>
+      <a href="#resume">resume</a>
+    </div>
+    <button class="toggle" id="themeBtn" aria-label="Switch theme"></button>
+  </div>
+</nav>
 
-               <!-- <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Data Analytics Intern</h3>
-                        <div class="subheading mb-3">MedTourEasy</div>
-                         <p>▶︎Just started.</p> 
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">October 2021 - Present</span></div>
-                </div> -->
+<div class="wrap">
+<div class="stage">
 
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Researcher</h3>
-                        <div class="subheading mb-3">Tata Research Development and Design Center (TRDDC) - TCS R&I</div>
-                        <p>▶︎Requirements engineering and natural language processing</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">August 2022 - present</span></div>
-                </div>
+<!-- ============ HERO ============ -->
+<header class="hero panel active" id="home">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow">ML Engineer · NLP, LLM &amp; VLM systems</div>
+      <h1>Gokul<br>Rejithkumar</h1>
+      <!-- EDIT: your one-line positioning -->
+      <p class="role">I build <b>language model systems</b> across retrieval, fine-tuning, and agentic workflows, and write about the work along the way.</p>
+      <!-- EDIT: replace href="#" with your real links -->
+      <div class="links">
+        <a href="#"><span class="dot"></span>GitHub</a>
+        <a href="#"><span class="dot"></span>Google Scholar</a>
+        <a href="#"><span class="dot"></span>LinkedIn</a>
+        <a href="mailto:you@example.com"><span class="dot"></span>Email</a>
+      </div>
+    </div>
+    <div class="photo-placeholder" aria-label="Profile photo placeholder"></div>
+  </div>
+  <div class="hero-about">
+    <p class="lead">ML Engineer focused on natural language processing and large language model systems. My day-to-day spans RAG pipelines, model fine-tuning, and agentic workflows, mostly in Python with PyTorch, HuggingFace, and the LangChain stack.</p>
+    <p class="lead muted">Outside of shipping systems, I publish research and keep a public record of what I read and decide. This page is that record.</p>
+  </div>
+</header>
 
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Data Science Intern</h3>
-                        <div class="subheading mb-3">The Sparks Foundation</div>
-                        <p>▶︎Various prediction tasks.</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">March 2021 - April 2021</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Intern</h3>
-                        <div class="subheading mb-3">Aarcchor Innovations pvt. ltd.</div>
-                        <p>▶︎Observed and understood various phases in the design of an inverter. <br>
-                            ▶︎Designed PCB circuits using Autodesk Eagle.</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">July 2010 - December 2011</span></div>
-                </div>
-            </div>
-        </section>
-        <hr class="m-0" />
-        <!-- Education-->
-        <section class="resume-section" id="education">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Education</h2>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Federal Institute of Science and Technology (FISAT), Kochi</h3>
-                        <div class="subheading mb-3">B.TECH</div>
-                        <div>Electronics and Instrumentation Engineering</div>
-                        <p>9.13 GPA</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">June 2018 - Present</span></div>
-                </div>
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience" class="panel">
+  <div class="sec-head"><span class="sq"></span><h2>Experience</h2><span class="conn"></span></div>
+  <!-- EDIT: most recent first. one block per role -->
+  <div class="explist">
+    <div class="exp">
+      <div class="exp-head"><h3>ML Engineer</h3><span class="when">2021 to present</span></div>
+      <div class="org">TCS Research · Pune</div>
+      <ul>
+        <li>Build NLP and LLM systems for enterprise use cases.</li>
+        <li>RAG pipelines, fine-tuning, and agentic workflows.</li>
+        <li>[Add a measurable outcome here.]</li>
+      </ul>
+    </div>
+    <div class="exp">
+      <div class="exp-head"><h3>[Previous role]</h3><span class="when">[year to year]</span></div>
+      <div class="org">[Company · Location]</div>
+      <ul>
+        <li>[What you owned.]</li>
+        <li>[A result or shipped artifact.]</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">City International School, Pune</h3>
-                        <div class="subheading mb-3">B.TECH</div>
-                        <div>Senior Secondary</div>
-                        <p>73.4%</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">June 2015 - June 2017</span></div>
-                </div>
+<!-- ============ STACK ============ -->
+<section id="stack" class="panel">
+  <div class="sec-head"><span class="sq"></span><h2>Stack</h2><span class="conn"></span></div>
+  <!-- EDIT: each row, set how many <i> have class "on" (out of 5). add "g" for a green-filled square -->
+  <div class="skills">
+    <div class="skill"><span class="sk-name">Python</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+    <div class="skill"><span class="sk-name">PyTorch</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+    <div class="skill"><span class="sk-name">HuggingFace</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+    <div class="skill"><span class="sk-name">LangChain / LangGraph</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+    <div class="skill"><span class="sk-name">Azure</span><div class="meter"><i class="on g"></i><i class="on g"></i><i class="on g"></i><i></i><i></i></div></div>
+    <div class="skill"><span class="sk-name">SQL</span><div class="meter"><i class="on g"></i><i class="on g"></i><i class="on g"></i><i></i><i></i></div></div>
+  </div>
+</section>
 
-            </div>
-        </section>
-        <hr class="m-0" />
-        <!-- Skills-->
-        <section class="resume-section" id="skills">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Skills</h2>
-                <div class="subheading mb-3">Programming Languages</div>
-                <ul class="list-inline dev-icons">
-                    <li class="list-inline-item"><i class="fab fa-python"></i></li>
-                    <li class="list-inline-item"><i class="fas fa-copyright"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-html5"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
+<!-- ============ PUBLICATIONS ============ -->
+<section id="publications" class="panel">
+  <div class="sec-head"><span class="sq"></span><h2>Publications</h2><span class="conn"></span></div>
+  <!-- EDIT: fill paper titles; venue tag on the left -->
+  <div class="pub">
+    <span class="tag">ICSE '25</span>
+    <div class="pbody"><h3>[Paper title]</h3><div class="auth">G. Rejithkumar, [co-authors]. <span class="award">Distinguished Paper Award</span></div></div>
+  </div>
+  <div class="pub">
+    <span class="tag">ICSE '24</span>
+    <div class="pbody"><h3>[Paper title]</h3><div class="auth">G. Rejithkumar, [co-authors].</div></div>
+  </div>
+  <div class="pub">
+    <span class="tag">RE '24</span>
+    <div class="pbody"><h3>[Paper title]</h3><div class="auth">G. Rejithkumar, [co-authors].</div></div>
+  </div>
+  <div class="pub">
+    <span class="tag">RE '23</span>
+    <div class="pbody"><h3>[Paper title]</h3><div class="auth">G. Rejithkumar, [co-authors].</div></div>
+  </div>
+  <div class="pub">
+    <span class="tag">IST · Elsevier</span>
+    <div class="pbody"><h3>[Journal paper title]</h3><div class="auth">G. Rejithkumar, [co-authors]. Information and Software Technology.</div></div>
+  </div>
+</section>
 
-                    <!-- <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-angular"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-react"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-sass"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-less"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-wordpress"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-gulp"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-grunt"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-npm"></i></li> -->
-                </ul>
-                <!-- <div class="subheading mb-3">Familiar Tools and Libraries</div>
-                <ul class="fa-ul mb-0">
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Keras • TensorFlow • MatPlotLib • Scikit-learn • NumPy • Pandas • OpenCV • MATLAB • Autodesk
-                        Eagle • LaTeX • MS Office • Android Studio • Jupyter Notebook
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Cross Browser Testing & Debugging
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Cross Functional Teams
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Agile Development & Scrum
-                    </li>
-                </ul>
-            </div> -->
+<!-- ============ CERTIFICATIONS ============ -->
+<section id="certifications" class="panel">
+  <div class="sec-head"><span class="sq"></span><h2>Certifications</h2><span class="conn"></span></div>
+  <!-- EDIT: one row per cert -->
+  <div class="certlist">
+    <div class="cert"><span class="b"></span><span>[Azure AI Engineer Associate]</span></div>
+    <div class="cert"><span class="b"></span><span>[DeepLearning.AI specialization]</span></div>
+    <div class="cert"><span class="b"></span><span>[Certification name]</span></div>
+    <div class="cert"><span class="b"></span><span>[Certification name]</span></div>
+  </div>
+</section>
 
-                <div class="subheading mb-3">Familiar Tools and Libraries</div>
+<!-- ============ READING ============ -->
+<section id="reading" class="panel">
+  <div class="sec-head"><span class="sq"></span><h2>Reading</h2><span class="conn"></span></div>
+  <div class="grid2">
+    <div>
+      <p class="shelf-label">Currently reading</p>
+      <!-- EDIT: books in progress -->
+      <div class="book"><span class="sp"></span><div><h4>[Book title]</h4><div class="by">[Author]</div></div></div>
+      <div class="book"><span class="sp"></span><div><h4>[Book title]</h4><div class="by">[Author]</div></div></div>
+    </div>
+    <div>
+      <p class="shelf-label">Read</p>
+      <!-- EDIT: finished books -->
+      <div class="book read"><span class="sp"></span><div><h4>[Book title]</h4><div class="by">[Author]</div></div></div>
+      <div class="book read"><span class="sp"></span><div><h4>[Book title]</h4><div class="by">[Author]</div></div></div>
+      <div class="book read"><span class="sp"></span><div><h4>[Book title]</h4><div class="by">[Author]</div></div></div>
+    </div>
+  </div>
+</section>
 
-                <span class="fa-li"><i class="fas fa-check"></i></span>
-                Keras • TensorFlow • MatPlotLib • Scikit-learn • NumPy • Pandas • OpenCV • Jupyter Notebook • Librosa • tqdm • pickle MATLAB • Autodesk
-                Eagle • LaTeX • Android Studio
+<!-- ============ EDUCATION ============ -->
+<section id="education" class="panel">
+  <div class="sec-head"><span class="sq"></span><h2>Education</h2><span class="conn"></span></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="item-top"><h3>M.Sc. Information Technology</h3><span class="when">[year]</span></div>
+      <div class="org">Universität Stuttgart</div>
+      <p style="margin:6px 0 0;color:var(--muted)">[Focus area or note.]</p>
+    </div>
+    <div class="card">
+      <div class="item-top"><h3>[B.Tech / B.E. degree]</h3><span class="when">[year]</span></div>
+      <div class="org">[University]</div>
+      <p style="margin:6px 0 0;color:var(--muted)">[Focus area or note.]</p>
+    </div>
+  </div>
+</section>
 
+<!-- ============ TIMELINE ============ -->
+<section id="timeline" class="panel">
+  <div class="sec-head"><span class="sq"></span><h2>Timeline</h2><span class="conn"></span></div>
+  <p class="lead muted" style="margin-bottom:24px">A date-wise log of milestones and decisions. Green nodes mark the bigger ones.</p>
+  <div class="tl">
+    <!-- EDIT: newest first. add class "key" on a row for a green node -->
+    <div class="tl-row key"><div class="date">2025</div><div class="ev">ICSE Distinguished Paper Award <span>· [one line of context]</span></div></div>
+    <div class="tl-row"><div class="date">2024</div><div class="ev">[Milestone or decision] <span>· [context]</span></div></div>
+    <div class="tl-row"><div class="date">2023</div><div class="ev">[Milestone or decision] <span>· [context]</span></div></div>
+    <div class="tl-row key"><div class="date">2021</div><div class="ev">Joined TCS Research <span>· [context]</span></div></div>
+    <!-- DUMMY ENTRIES: remove or replace these 8 -->
+    <div class="tl-row"><div class="date">2020</div><div class="ev">[Dummy] Shipped an internal tooling project <span>· placeholder</span></div></div>
+    <div class="tl-row key"><div class="date">2020</div><div class="ev">[Dummy] Promotion or role change <span>· placeholder</span></div></div>
+    <div class="tl-row"><div class="date">2019</div><div class="ev">[Dummy] Completed a certification <span>· placeholder</span></div></div>
+    <div class="tl-row"><div class="date">2019</div><div class="ev">[Dummy] First conference talk <span>· placeholder</span></div></div>
+    <div class="tl-row"><div class="date">2018</div><div class="ev">[Dummy] Started a side project <span>· placeholder</span></div></div>
+    <div class="tl-row key"><div class="date">2018</div><div class="ev">[Dummy] Graduated / first job <span>· placeholder</span></div></div>
+    <div class="tl-row"><div class="date">2017</div><div class="ev">[Dummy] Internship <span>· placeholder</span></div></div>
+    <div class="tl-row"><div class="date">2016</div><div class="ev">[Dummy] Began undergraduate studies <span>· placeholder</span></div></div>
+  </div>
+</section>
 
+<!-- ============ RESUME REQUEST ============ -->
+<section id="resume" class="panel">
+  <div class="sec-head"><span class="sq"></span><h2>Resume</h2><span class="conn"></span></div>
+  <p class="lead muted" style="margin-bottom:22px">My resume is not posted publicly. Send a short request and it opens your own email app with the details filled in. I reply with the file.</p>
+  <div class="reqbox card">
+    <div class="field"><label for="rqName">Name</label><input id="rqName" type="text" placeholder="Your name" /></div>
+    <div class="field"><label for="rqEmail">Email</label><input id="rqEmail" type="email" placeholder="you@company.com" /></div>
+    <div class="field"><label for="rqNote">Reason (optional)</label><textarea id="rqNote" rows="3" placeholder="Role, company, or context"></textarea></div>
+    <button class="btn" id="rqBtn" type="button">Request resume</button>
+    <div class="note">Opens your email app · nothing is sent automatically.</div>
+  </div>
+</section>
 
-        </section>
-        <hr class="m-0" />
-        <!-- Interests-->
-        <!-- <section class="resume-section" id="interests">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Interests</h2>
-                <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid
-                    skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking,
-                    free climbing, and kayaking.</p>
-                <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and television
-                    shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest
-                    technology advancements in the front-end web development world.</p>
-            </div>
-        </section>
-        <hr class="m-0" /> -->
-        <!-- Awards-->
-        <!-- <section class="resume-section" id="awards">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Awards & Certifications</h2>
-                <ul class="fa-ul mb-0">
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        Google Analytics Certified Developer
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        Mobile Web Specialist - Google Certification
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        1
-                        <sup>st</sup>
-                        Place - University of Colorado Boulder - Emerging Tech Competition 2009
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        1
-                        <sup>st</sup>
-                        Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        2
-                        <sup>nd</sup>
-                        Place - University of Colorado Boulder - Emerging Tech Competition 2008
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        1
-                        <sup>st</sup>
-                        Place - James Buchanan High School - Hackathon 2006
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        3
-                        <sup>rd</sup>
-                        Place - James Buchanan High School - Hackathon 2005
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </div> -->
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+</div><!-- /stage -->
+</div><!-- /wrap -->
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-in">
+    <small><span class="foot-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>© <span id="yr"></span> Gokul Rejithkumar</small>
+    <div class="links">
+      <a href="#"><span class="dot"></span>GitHub</a>
+      <a href="#"><span class="dot"></span>Scholar</a>
+      <a href="#"><span class="dot"></span>LinkedIn</a>
+      <a href="mailto:you@example.com"><span class="dot"></span>Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var sun='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.9" y1="4.9" x2="7" y2="7"/><line x1="17" y1="17" x2="19.1" y2="19.1"/><line x1="4.9" y1="19.1" x2="7" y2="17"/><line x1="17" y1="7" x2="19.1" y2="4.9"/></svg>';
+  var moon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+
+  var saved=null;
+  try{saved=localStorage.getItem("theme");}catch(e){}
+  if(saved){root.setAttribute("data-theme",saved);}
+  else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){root.setAttribute("data-theme","dark");}
+
+  var btn=document.getElementById("themeBtn");
+  function paint(){btn.innerHTML=root.getAttribute("data-theme")==="dark"?moon:sun;}
+  paint();
+  btn.addEventListener("click",function(){
+    var next=root.getAttribute("data-theme")==="dark"?"light":"dark";
+    root.setAttribute("data-theme",next);
+    try{localStorage.setItem("theme",next);}catch(e){}
+    paint();
+  });
+
+  /* resume request -> mailto */
+  document.getElementById("rqBtn").addEventListener("click",function(){
+    var to="you@example.com"; /* EDIT: your email */
+    var n=document.getElementById("rqName").value.trim();
+    var e=document.getElementById("rqEmail").value.trim();
+    var m=document.getElementById("rqNote").value.trim();
+    var subject="Resume request: "+(n||"website visitor");
+    var body="Name: "+n+"\nEmail: "+e+"\n\n"+(m||"[reason]");
+    window.location.href="mailto:"+to+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+  });
+
+  /* ---------- SPA: horizontal panel router ---------- */
+  var panels=Array.prototype.slice.call(document.querySelectorAll(".panel"));
+  var ids=panels.map(function(p){return p.id;});
+  var navlinks=Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var current=0;
+
+  function go(id,first){
+    var ti=ids.indexOf(id);
+    if(ti<0){ti=0;id=ids[0];}
+    var dir=ti>=current?"from-right":"from-left";
+    panels.forEach(function(p){p.classList.remove("active","from-right","from-left");});
+    var target=document.getElementById(id);
+    target.classList.add("active");
+    if(!reduce&&!first){target.classList.add(dir);}
+    current=ti;
+    navlinks.forEach(function(a){
+      a.classList.toggle("current",a.getAttribute("href")==="#"+id);
+    });
+    window.scrollTo(0,0);
+  }
+
+  function fromHash(first){
+    var h=(location.hash||"").replace("#","");
+    if(ids.indexOf(h)<0){h=ids[0];}
+    go(h,first);
+  }
+
+  document.addEventListener("click",function(e){
+    var a=e.target.closest?e.target.closest('a[href^="#"]'):null;
+    if(!a)return;
+    var href=a.getAttribute("href");
+    if(href==="#"){e.preventDefault();return;}      /* placeholder links */
+    var id=href.slice(1);
+    if(ids.indexOf(id)<0)return;                     /* not a panel target */
+    e.preventDefault();
+    if((location.hash||"").slice(1)===id){go(id);}   /* same hash: re-show */
+    else{location.hash=id;}                           /* fires hashchange */
+  });
+
+  window.addEventListener("hashchange",function(){fromHash(false);});
+  fromHash(true);
+
+  /* ---------- Timeline: collapse long lists, reveal in batches ---------- */
+  (function(){
+    var tl=document.querySelector(".tl");
+    if(!tl)return;
+    var rows=Array.prototype.slice.call(tl.querySelectorAll(".tl-row"));
+    var PAGE=6;                 /* entries shown before the control appears */
+    if(rows.length<=PAGE)return;
+    var shown=PAGE;
+    var btn=document.createElement("button");
+    btn.type="button";btn.className="tl-more";
+    function render(){
+      rows.forEach(function(r,i){r.style.display=i<shown?"":"none";});
+      if(shown>=rows.length){btn.textContent="Show less";btn.dataset.mode="less";}
+      else{btn.textContent="Show "+(rows.length-shown)+" earlier";btn.dataset.mode="more";}
+    }
+    btn.addEventListener("click",function(){
+      if(btn.dataset.mode==="more"){shown=Math.min(shown+PAGE,rows.length);}
+      else{shown=PAGE;tl.scrollIntoView({behavior:"smooth",block:"start"});}
+      render();
+    });
+    tl.parentNode.insertBefore(btn,tl.nextSibling);
+    render();
+  })();
+
+  document.getElementById("yr").textContent=new Date().getFullYear();
+})();
+</script>
 </body>
-
 </html>
